@@ -12,7 +12,7 @@ Patch0:		rubygem-passenger-2.2.9-missing-includes.patch
 Patch1:		rubygem-passenger-2.2.9-compile-flags.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	ruby-devel ruby-RubyGems
-Requires:	rubygem-rack rubygem-rake rubygem-fastthread
+Requires:	ruby-rack ruby-rake rubygem-fastthread
 
 %description
 Passenger is an Apache module for Ruby on Rails support.
