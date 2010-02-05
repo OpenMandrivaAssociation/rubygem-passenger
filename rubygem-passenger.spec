@@ -10,7 +10,7 @@ URL:		http://%{oname}.rubyforge.org/
 Source0:	http://gems.rubyforge.org/gems/%{oname}-%{version}.gem
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	ruby-devel ruby-RubyGems
-Requires:	ruby rubygem-ruby-hmac
+Requires:	rubygem-rack rubygem-rake rubygem-fastthread
 
 %description
 Passenger is an Apache module for Ruby on Rails support.
