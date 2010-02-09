@@ -12,8 +12,9 @@ Source1:	mod_passenger.conf
 Patch0:		rubygem-passenger-2.2.9-missing-includes.patch
 Patch1:		rubygem-passenger-2.2.9-compile-flags.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	ruby-devel ruby-RubyGems apache-devel
+BuildRequires:	ruby-devel ruby-RubyGems apache-devel ruby-rake
 Requires:	ruby-rack ruby-rake rubygem-fastthread rails
+Provides:	apache-mod_passenger = %{version}-%{release}
 
 %description
 Passenger is an Apache module for Ruby on Rails support.
@@ -44,7 +45,7 @@ sed -e 's#ruby1.8#ruby#g' -i %{buildroot}%{_bindir}/passenger-memory-stats
 install -m755 ext/apache2/mod_passenger.so -D %{buildroot}%{_libdir}/apache-extramodules/mod_passenger.so
 install -m755 ext/apache2/ApplicationPoolServerExecutable -D %{buildroot}%{ruby_sitearchdir}/phusion_passenger/ApplicationPoolServerExecutable
 install -m755 ext/phusion_passenger/native_support.so -D %{buildroot}%{ruby_sitearchdir}/phusion_passenger/native_support.so
-install -m755 ext/nginx/HelperServer -D  %{buildroot}%{ruby_gemdir}/gems/%{oname}-%{version}/ext/nginx/HelperServer
+install -m755 ext/nginx/HelperServer -D %{buildroot}%{ruby_gemdir}/gems/%{oname}-%{version}/ext/nginx/HelperServer
 ln -s %{ruby_sitearchdir}/phusion_passenger %{buildroot}%{_prefix}/lib
 
 %post
