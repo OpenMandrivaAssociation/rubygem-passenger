@@ -13,6 +13,7 @@ Patch0:		rubygem-passenger-2.2.9-missing-includes.patch
 Patch1:		rubygem-passenger-2.2.9-compile-flags.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	ruby-devel ruby-RubyGems apache-devel ruby-rake
+BuildRequires:	apache-base
 Requires:	ruby-rack ruby-rake rubygem-fastthread rails
 Provides:	apache-mod_passenger = %{version}-%{release}
 
