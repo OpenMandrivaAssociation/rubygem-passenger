@@ -24,8 +24,8 @@ Passenger is an Apache module for Ruby on Rails support.
 %patch1 -p1 -b .flags~
 
 %build
-#%define _disable_ld_no_undefined 1
-#%setup_compile_flags
+%define _disable_ld_no_undefined 1
+%setup_compile_flags
 rake apache2 APXS2=%{_sbindir}/apxs OPTIMIZE=yes
 %gem_build
 
