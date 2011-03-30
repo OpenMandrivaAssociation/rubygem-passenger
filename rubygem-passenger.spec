@@ -12,7 +12,7 @@ Source1:	mod_passenger.conf
 Patch0:		rubygem-passenger-3.0.5-missing-includes.patch
 Patch1:		rubygem-passenger-3.0.5-compile-flags.patch
 BuildRequires:	ruby-devel ruby-RubyGems apache-devel ruby-rake
-BuildRequires:	apache-base
+BuildRequires:	apache-base curl-devel
 Provides:	apache-mod_passenger = %{version}-%{release}
 
 %description
@@ -52,4 +52,3 @@ fi
 %{_libdir}/apache-extramodules/mod_passenger.so
 %{_prefix}/lib/phusion_passenger
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/mod_passenger.conf
-
