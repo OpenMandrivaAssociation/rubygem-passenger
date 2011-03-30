@@ -50,5 +50,4 @@ fi
 %{ruby_gemdir}/specifications/%{oname}-%{version}.gemspec
 %{_bindir}/passenger*
 %{_libdir}/apache-extramodules/mod_passenger.so
-%{_prefix}/lib/phusion_passenger
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/mod_passenger.conf
