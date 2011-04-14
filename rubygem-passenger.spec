@@ -3,7 +3,7 @@
 Summary:	Apache module for Ruby on Rails support
 Name:		rubygem-%{oname}
 Version:	3.0.5
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Ruby
 URL:		http://%{oname}.rubyforge.org/
@@ -27,13 +27,18 @@ Passenger is an Apache module for Ruby on Rails support.
 %define _disable_ld_no_undefined 1
 %setup_compile_flags
 rake apache2 APXS2=%{_sbindir}/apxs OPTIMIZE=yes
-%gem_build
+%gem_build -f 'helper-scripts'
 
 %install
 install -m0644 %{SOURCE1} -D %{buildroot}%{_sysconfdir}/httpd/modules.d/mod_passenger.conf
 
 %gem_install
 install -m755 ext/apache2/mod_passenger.so -D %{buildroot}%{_libdir}/apache-extramodules/mod_passenger.so
+install -m755 ext/ruby/ruby-*/passenger_native_support.so -D %{buildroot}%{ruby_sitearchdir}/passenger_native_support.so
+cp -r agents  %{buildroot}%{ruby_sitearchdir}/
+ln -s %{ruby_sitearchdir} %{buildroot}%{_prefix}/lib/phusion-passenger
+install -d %{buildroot}%{_datadir}/phusion-passenger
+ln -s %{ruby_gemdir}/gems/%{oname}-%{version}/helper-scripts %{buildroot}%{_datadir}/phusion-passenger
 
 %post
 service httpd condrestart
@@ -48,6 +53,11 @@ fi
 %doc %{ruby_gemdir}/doc/%{oname}-%{version}
 %{ruby_gemdir}/gems/%{oname}-%{version}
 %{ruby_gemdir}/specifications/%{oname}-%{version}.gemspec
+%{ruby_sitearchdir}/passenger_native_support.so
+%dir %{ruby_sitearchdir}/agents
+%{ruby_sitearchdir}/agents/*
 %{_bindir}/passenger*
 %{_libdir}/apache-extramodules/mod_passenger.so
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/mod_passenger.conf
+%{_prefix}/lib/phusion-passenger
+%{_datadir}/phusion-passenger
