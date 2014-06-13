@@ -3,7 +3,7 @@
 Summary:	Apache module for Ruby on Rails support
 Name:		rubygem-%{oname}
 Version:	3.0.5
-Release:	6
+Release:	7
 License:	MIT
 Group:		Development/Ruby
 URL:		http://%{oname}.rubyforge.org/
