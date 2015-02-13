@@ -41,7 +41,7 @@ install -m755 buildout/ruby/ruby-*/passenger_native_support.so -D %{buildroot}%{
 cp -r buildout/agents  %{buildroot}%{ruby_sitearchdir}/
 ln -s %{ruby_sitearchdir} %{buildroot}%{_prefix}/lib/phusion-passenger
 install -d %{buildroot}%{_datadir}/phusion-passenger
-ln -s %{gemdir}/gems/%{oname}-%{version}/helper-scripts %{buildroot}%{_datadir}/phusion-passenger
+ln -s %{gem_dir}/gems/%{oname}-%{version}/helper-scripts %{buildroot}%{_datadir}/phusion-passenger
 
 %post
 service httpd condrestart
@@ -53,9 +53,9 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc %{ruby_gemdir}/doc/%{oname}-%{version}
-%{gemdir}/gems/%{oname}-%{version}
-%{gemdir}/specifications/%{oname}-%{version}.gemspec
+%doc %{gem_dir}/doc/%{oname}-%{version}
+%{gem_dir}/gems/%{oname}-%{version}
+%{gem_dir}/specifications/%{oname}-%{version}.gemspec
 %{ruby_sitearchdir}/passenger_native_support.so
 %dir %{ruby_sitearchdir}/agents
 %{ruby_sitearchdir}/agents/*
