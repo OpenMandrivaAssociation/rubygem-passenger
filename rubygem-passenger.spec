@@ -2,15 +2,13 @@
 
 Summary:	Apache module for Ruby on Rails support
 Name:		rubygem-%{oname}
-Version:	3.0.5
-Release:	9
+Version:	4.0.59
+Release:	1
 License:	MIT
 Group:		Development/Ruby
 URL:		http://%{oname}.rubyforge.org/
 Source0:	http://gems.rubyforge.org/gems/%{oname}-%{version}.gem
 Source1:	mod_passenger.conf
-Patch0:		rubygem-passenger-3.0.5-missing-includes.patch
-Patch1:		rubygem-passenger-3.0.5-compile-flags.patch
 BuildRequires:	ruby-devel ruby-RubyGems apache-devel ruby-rake
 BuildRequires:	apache-base curl-devel
 Provides:	apache-mod_passenger = %{version}-%{release}
@@ -20,13 +18,15 @@ Passenger is an Apache module for Ruby on Rails support.
 
 %prep
 %setup -q
-%patch0 -p1 -b .incs~
-%patch1 -p1 -b .flags~
 
 %build
 %define _disable_ld_no_undefined 1
 %setup_compile_flags
-rake apache2 APXS2=%{_sbindir}/apxs OPTIMIZE=yes
+
+export EXTRA_CXXFLAGS=$CXXFLAGS
+export EXTRA_LDFLAGS=$LDFLAGS
+
+rake apache2 APXS2=%{_bindir}/apxs OPTIMIZE=yes
 %gem_build -f 'helper-scripts'
 
 %install

@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   passenger-3.0.5.gem: 74af1ab61e43334ac906ebd142c4893e9c77baf0
+sources:
+  passenger-4.0.59.gem: 8286010d25093eaac7af5ddd70c485511505eeea
