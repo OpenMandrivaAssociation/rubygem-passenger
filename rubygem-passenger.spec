@@ -9,6 +9,7 @@ Group:		Development/Ruby
 URL:		http://%{oname}.rubyforge.org/
 Source0:	http://gems.rubyforge.org/gems/%{oname}-%{version}.gem
 Source1:	mod_passenger.conf
+Source100:	%{name}.rpmlintrc
 BuildRequires:	ruby-devel ruby-RubyGems apache-devel ruby-rake
 BuildRequires:	apache-base curl-devel
 Provides:	apache-mod_passenger = %{version}-%{release}
@@ -39,6 +40,7 @@ install -m0644 %{SOURCE1} -D %{buildroot}%{_sysconfdir}/httpd/modules.d/mod_pass
 install -m755 buildout/apache2/mod_passenger.so -D %{buildroot}%{_libdir}/apache-extramodules/mod_passenger.so
 install -m755 buildout/ruby/ruby-*/passenger_native_support.so -D %{buildroot}%{ruby_sitearchdir}/passenger_native_support.so
 cp -r buildout/agents  %{buildroot}%{ruby_sitearchdir}/
+mkdir -p %{buildroot}%{_prefix}/lib
 ln -s %{ruby_sitearchdir} %{buildroot}%{_prefix}/lib/phusion-passenger
 install -d %{buildroot}%{_datadir}/phusion-passenger
 ln -s %{gem_dir}/gems/%{oname}-%{version}/helper-scripts %{buildroot}%{_datadir}/phusion-passenger
