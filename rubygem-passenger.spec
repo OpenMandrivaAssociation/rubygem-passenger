@@ -23,6 +23,9 @@ Passenger is an Apache module for Ruby on Rails support.
 %define _disable_ld_no_undefined 1
 %setup_compile_flags
 
+export CC=gcc
+export CXX=g++
+
 export EXTRA_CXXFLAGS=$CXXFLAGS
 export EXTRA_LDFLAGS=$LDFLAGS
 
