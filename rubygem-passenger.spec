@@ -38,7 +38,7 @@ install -m0644 %{SOURCE1} -D %{buildroot}%{_sysconfdir}/httpd/modules.d/mod_pass
 %gem_install
 install -m755 buildout/apache2/mod_passenger.so -D %{buildroot}%{_libdir}/apache-extramodules/mod_passenger.so
 install -m755 buildout/ruby/ruby-*/passenger_native_support.so -D %{buildroot}%{ruby_sitearchdir}/passenger_native_support.so
-cp -r agents  %{buildroot}%{ruby_sitearchdir}/
+cp -r buildout/agents  %{buildroot}%{ruby_sitearchdir}/
 ln -s %{ruby_sitearchdir} %{buildroot}%{_prefix}/lib/phusion-passenger
 install -d %{buildroot}%{_datadir}/phusion-passenger
 ln -s %{gemdir}/gems/%{oname}-%{version}/helper-scripts %{buildroot}%{_datadir}/phusion-passenger
