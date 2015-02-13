@@ -51,8 +51,8 @@ fi
 %files
 %defattr(-,root,root)
 %doc %{ruby_gemdir}/doc/%{oname}-%{version}
-%{ruby_gemdir}/gems/%{oname}-%{version}
-%{ruby_gemdir}/specifications/%{oname}-%{version}.gemspec
+%{gemdir}/gems/%{oname}-%{version}
+%{gemdir}/specifications/%{oname}-%{version}.gemspec
 %{ruby_sitearchdir}/passenger_native_support.so
 %dir %{ruby_sitearchdir}/agents
 %{ruby_sitearchdir}/agents/*
