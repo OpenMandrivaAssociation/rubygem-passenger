@@ -6,7 +6,7 @@ Version:	4.0.59
 Release:	3
 License:	MIT
 Group:		Development/Ruby
-URL:		http://%{oname}.rubyforge.org/
+URL:		https://%{oname}.rubyforge.org/
 Source0:	http://gems.rubyforge.org/gems/%{oname}-%{version}.gem
 Source1:	mod_passenger.conf
 Source100:	%{name}.rpmlintrc
